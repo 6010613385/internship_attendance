@@ -1,2 +1,2 @@
-# Generate PDF ใบลงเวลาฝึกงาน
+# PDF Generator
 :D
