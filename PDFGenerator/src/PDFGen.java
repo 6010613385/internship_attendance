@@ -26,7 +26,7 @@ public class PDFGen {
 		Option output_file = new Option("o", "output", true, "output file name (.pdf format file)");
 		output_file.setRequired(true);
 		options.addOption(output_file);
-		
+
 		Option template_file = new Option("t", "template", true, "template file name (.pdf format file)");
 		template_file.setRequired(true);
 		options.addOption(template_file);
@@ -43,21 +43,21 @@ public class PDFGen {
 			cmd = parser.parse(options, args);
 		} catch (org.apache.commons.cli.ParseException e) {
 			System.out.println(e.getMessage());
-            formatter.printHelp("my-program", options);
-            System.exit(1);
-            return;
+			formatter.printHelp("my-program", options);
+			System.exit(1);
+			return;
 		}
-		
+
 		String output = cmd.getOptionValue("output");
 		String template = cmd.getOptionValue("template");
 		String font = cmd.getOptionValue("font");
 		String data = cmd.getOptionValue("input");
 
-		System.out.println("Output file: "+output);
-		System.out.println("Template file: "+template);
-		System.out.println("Font file: "+font);
-		System.out.println("Input file: "+data);
-		
+		System.out.println("Output file: " + output);
+		System.out.println("Template file: " + template);
+		System.out.println("Font file: " + font);
+		System.out.println("Input file: " + data);
+
 		PDFGen obj = new PDFGen();
 		obj.genPDF(template, output, font, data);
 		System.out.println("\nPDF file generated.");
@@ -121,7 +121,9 @@ public class PDFGen {
 		YamlSequence row = data_file.yamlSequence("row");
 
 		int i = 1;
-		long time_count = 0;
+		long wtime_count = 0;
+		long work_time = 0;
+		int break_time = 0;
 		SimpleDateFormat format = new SimpleDateFormat("HH:mm");
 		Date work_in = null;
 		Date work_out = null;
@@ -154,13 +156,15 @@ public class PDFGen {
 				e.printStackTrace();
 			}
 			long time_tmp = (work_out.getTime() - work_in.getTime()) / (60 * 60 * 1000);
-			time_count = time_count + time_tmp;
+			wtime_count = wtime_count + time_tmp;
+			break_time = break_time + str.integer("break_time");
 			i++;
 		}
 
 		// Calculate work time count
+
 		String count = Integer.toString(i - 1);
-		String t_count = String.valueOf(time_count);
+		String t_count = String.valueOf(wtime_count - break_time);
 		form.setField("total_work", count);
 		form.setField("total_hours", t_count);
 
