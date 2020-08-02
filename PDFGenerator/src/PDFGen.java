@@ -122,7 +122,6 @@ public class PDFGen {
 
 		int i = 1;
 		long wtime_count = 0;
-		long work_time = 0;
 		int break_time = 0;
 		SimpleDateFormat format = new SimpleDateFormat("HH:mm");
 		Date work_in = null;
@@ -130,6 +129,7 @@ public class PDFGen {
 
 		// Merge with data file and set font size
 		form.setField("name", data_file.string("name"));
+		form.setFieldProperty("id","id",input_font,null);
 		form.setField("id", data_file.string("id"));
 		form.setField("company", data_file.string("company"));
 		form.setField("department", data_file.string("department"));

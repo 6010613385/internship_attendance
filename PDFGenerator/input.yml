@@ -1,4 +1,4 @@
-#java -Dfile.encoding=utf-8 -jar jarfile_name.jar -o output.pdf -t template.pdf -f font.ttf -i input.yml
+#java -Dfile.encoding=utf-8 -jar attendance.jar -o output.pdf -t template.pdf -f font.ttf -i input.yml
 name: นางสาว ณัฐธิดา ปัญญา
 id: 6010613385
 company: คณะวิศวกรรมศาสตร์ มหาวิทยาลัยธรรมศาสตร์
@@ -7,233 +7,340 @@ total_leave: 0
 total_late: 0
 total_absent: 0 
 
+#ความหมายของแต่ละ field ข้อมูล
+#date: วันที่ทำงาน เช่น 01/06/63
+#in: เวลาเข้าทำงาน เช่น 9:30 (ต้องตรงตาม format นี้เท่านั้นไม่งั้นโปรแกรมจะ parse เวลาไม่ได้)
+#out: เวลาเลิกทำงาน เช่น 17:30 (ต้องตรงตาม format นี้เท่านั้นไม่งั้นโปรแกรมจะ parse เวลาไม่ได้)
+#job: รายละเอียดการทำงาน เช่น เรียนรู้การใช้เว็บไซต์ trello สำหรับวางแผนการพัฒนาซอฟต์แวร์
+#break_time: จำนวนชั่วโมงเวลาพัก เช่น 1
+#note: หมายเหตุต่างๆ
+
+#example
 row:
-  - # 1
+  - # Day 1
     date: 01/06/63
-    in: 9:30
+    in: 8:30
     out: 17:30
-    job: เรียนรู้การใช้เว็บไซต์ trello สำหรับวางแผนการพัฒนาซอฟต์แวร์
+    job: เรียนรู้การใช้เว็บไซต์ trello สำหรับวางแผนการพัฒนาซอฟต์แวร์จากรุ่นพี่
     break_time: 1
     # note: หมายเหตุ
-  - 
+    
+  - # Day 2
     date: 02/06/63
-    in: 9:30
+    in: 8:30
     out: 17:30
-    job: เริ่มใช้เว็บไซต์ trello สำหรับวางแผนการฝึกงาน
+    job: ทดลองใช้เว็บไซต์ trello สำหรับวางแผนการฝึกงาน
     break_time: 1
-  - 
+    # note: หมายเหตุ
+    
+  - # Day 3
     date: 03/06/63
-    in: 9:30
+    in: 8:30
     out: 17:30
-    job: เรียนรู้รายละเอียดงานที่อาจารย์ได้มอบหมายให้ทำ
+    job: สร้าง board เป็นของตัวเองใน trello เตรียมสำหรับการวางแผนฝึกงาน
     break_time: 1
-  - 
-    date: 03/06/63
-    in: 9:30
+    # note: หมายเหตุ
+    
+  - # Day 4
+    date: 04/06/63
+    in: 8:30
     out: 17:30
-    job: เรียนรู้รายละเอียดงานที่อาจารย์ได้มอบหมายให้ทำ
+    job: ตกแต่ง board ที่สร้างไว้ใน trello 
     break_time: 1
-  - 
-    date: 03/06/63
-    in: 9:30
+    # note: หมายเหตุ
+    
+  - # Day 5
+    date: 05/06/63
+    in: 8:30
     out: 17:30
-    job: เรียนรู้รายละเอียดงานที่อาจารย์ได้มอบหมายให้ทำ
+    job: พูดคุยและเรียนรู้รายละเอียดงานที่อาจารย์ได้มอบหมายให้ทำ
     break_time: 1
-  - 
-    date: 01/06/63
-    in: 9:30
+    # note: หมายเหตุ
+    
+  - # Day 6
+    date: 06/06/63
+    in: 8:30
     out: 17:30
-    job: เรียนรู้การใช้เว็บไซต์ trello สำหรับวางแผนการพัฒนาซอฟต์แวร์
+    job: เริ่มต้นค้นหาข้อมูลของ tools ที่จะใช้ generate ไฟล์ PDF
     break_time: 1
-  - 
-    date: 02/06/63
-    in: 9:30
+    # note: หมายเหตุ
+    
+  - # Day 7
+    date: 07/06/63
+    in: 8:30
     out: 17:30
-    job: เริ่มใช้เว็บไซต์ trello สำหรับวางแผนการฝึกงาน
+    job: หาข้อมูลของ tools ที่จะใช้ generate ไฟล์ PDF
     break_time: 1
-  - 
-    date: 03/06/63
+    # note: หมายเหตุ
+    
+  - # Day 8
+    date: 08/06/63
     in: 9:30
-    out: 17:30
-    job: เรียนรู้รายละเอียดงานที่อาจารย์ได้มอบหมายให้ทำ
+    out: 13:30
+    job: หาข้อมูลของ tools ที่จะใช้ generate ไฟล์ PDF เพิ่มเติม
     break_time: 1
-  - 
-    date: 03/06/63
+    # note: หมายเหตุ
+    
+  - # Day 9
+    date: 10/06/63
     in: 9:30
-    out: 17:30
-    job: เรียนรู้รายละเอียดงานที่อาจารย์ได้มอบหมายให้ทำ
+    out: 18:30
+    job: เรียนรู้วิธีใช้งาน pdfgeneratorapi
     break_time: 1
-  - 
-    date: 03/06/63
-    in: 9:30
+    # note: หมายเหตุ
+    
+  - # Day 10
+    date: 11/06/63
+    in: 8:30
     out: 17:30
-    job: เรียนรู้รายละเอียดงานที่อาจารย์ได้มอบหมายให้ทำ
+    job: หาข้อมูลเกี่ยวกับ API ในการทดลองใช้ pdfgeneratorapi
     break_time: 1
-  - 
-    date: 01/06/63
+    # note: หมายเหตุ
+    
+  - # Day 11
+    date: 12/06/63
     in: 9:30
-    out: 17:30
-    job: เรียนรู้การใช้เว็บไซต์ trello สำหรับวางแผนการพัฒนาซอฟต์แวร์
+    out: 18:30
+    job: สรุปผลที่ได้จากการใช้งาน pdfgeneratorapi
     break_time: 1
-  - 
-    date: 02/06/63
-    in: 9:30
+    # note: หมายเหตุ
+    
+  - # Day 12
+    date: 13/06/63
+    in: 8:30
     out: 17:30
-    job: เริ่มใช้เว็บไซต์ trello สำหรับวางแผนการฝึกงาน
+    job: หา tools อื่นๆที่จะใช้ generate ไฟล์ PDF
     break_time: 1
-  - 
-    date: 03/06/63
+    # note: หมายเหตุ
+    
+  - # Day 13
+    date: 14/06/63
     in: 9:30
     out: 17:30
-    job: เรียนรู้รายละเอียดงานที่อาจารย์ได้มอบหมายให้ทำ
+    job: หา tools อื่นๆที่จะใช้ generate ไฟล์ PDF เพิ่มเติม
     break_time: 1
-  - 
-    date: 03/06/63
-    in: 9:30
+    # note: หมายเหตุ
+    
+  - # Day 14
+    date: 16/06/63
+    in: 8:30
     out: 17:30
-    job: เรียนรู้รายละเอียดงานที่อาจารย์ได้มอบหมายให้ทำ
+    job: สร้าง template ขึ้นมาด้วย  MS Word แล้วแปลงเป็น PDF
     break_time: 1
-  - 
-    date: 03/06/63
+    # note: หมายเหตุ
+    
+  - # Day 15
+    date: 17/06/63
     in: 9:30
     out: 17:30
-    job: เรียนรู้รายละเอียดงานที่อาจารย์ได้มอบหมายให้ทำ
+    job: หา tools อื่นๆที่เหมาะสมที่จะใช้ generate ไฟล์ PDF
     break_time: 1
-  - 
-    date: 01/06/63
-    in: 9:30
+    # note: หมายเหตุ
+    
+  - # Day 16
+    date: 18/06/63
+    in: 8:30
     out: 17:30
-    job: เรียนรู้การใช้เว็บไซต์ trello สำหรับวางแผนการพัฒนาซอฟต์แวร์
+    job: เรียนรู้ tools สำหรับ merge text file กับ template PDF
     break_time: 1
-  - 
-    date: 02/06/63
-    in: 9:30
-    out: 17:30
-    job: เริ่มใช้เว็บไซต์ trello สำหรับวางแผนการฝึกงาน
+    # note: หมายเหตุ
+    
+  - # Day 17
+    date: 19/06/63
+    in: 7:30
+    out: 12:30
+    job: ทดลองใช้ pdfill PDF Form Filler
     break_time: 1
-  - 
-    date: 03/06/63
+    # note: หมายเหตุ
+    
+  - # Day 18
+    date: 22/06/63
     in: 9:30
-    out: 17:30
-    job: เรียนรู้รายละเอียดงานที่อาจารย์ได้มอบหมายให้ทำ
+    out: 18:30
+    job: สรุปผลลัพธ์ที่ได้จากการใช้ pdfill PDF Form Filler
     break_time: 1
-  - 
-    date: 03/06/63
-    in: 9:30
+    # note: หมายเหตุ
+    
+  - # Day 19
+    date: 23/06/63
+    in: 8:30
     out: 17:30
-    job: เรียนรู้รายละเอียดงานที่อาจารย์ได้มอบหมายให้ทำ
+    job: หา tools สำหรับ merge data file กับ template PDF
     break_time: 1
-  - 
-    date: 03/06/63
+    # note: หมายเหตุ
+    
+  - # Day 20
+    date: 24/06/63
     in: 9:30
-    out: 17:30
-    job: เรียนรู้รายละเอียดงานที่อาจารย์ได้มอบหมายให้ทำ
+    out: 19:30
+    job: ลองใช้ macro ใน MS Excel เพื่อ merge ข้อมูลลงใน PDF
     break_time: 1
-  - 
-    date: 01/06/63
-    in: 9:30
+    # note: หมายเหตุ
+    
+  - # Day 21
+    date: 25/06/63
+    in: 8:30
     out: 17:30
-    job: เรียนรู้การใช้เว็บไซต์ trello สำหรับวางแผนการพัฒนาซอฟต์แวร์
+    job: เรียนรู้เกี่ยวกับ PDF Java library iText 7 Core 
     break_time: 1
-  - 
-    date: 02/06/63
-    in: 9:30
+    # note: หมายเหตุ
+    
+  - # Day 22
+    date: 26/06/63
+    in: 8:30
     out: 17:30
-    job: เริ่มใช้เว็บไซต์ trello สำหรับวางแผนการฝึกงาน
+    job: ทดลองใช้ PDF Java library iText 7 Core
     break_time: 1
-  - 
-    date: 03/06/63
-    in: 9:30
+    # note: หมายเหตุ
+    
+  - # Day 23
+    date: 29/06/63
+    in: 8:30
     out: 17:30
-    job: เรียนรู้รายละเอียดงานที่อาจารย์ได้มอบหมายให้ทำ
+    job: เขียนโปรแกรมภาษา Java โดยใช้ iText 7 ในการสร้างไฟล์ PDF
     break_time: 1
-  - 
-    date: 03/06/63
-    in: 9:30
+    # note: หมายเหตุ
+    
+  - # Day 24
+    date: 30/06/63
+    in: 8:30
     out: 17:30
-    job: เรียนรู้รายละเอียดงานที่อาจารย์ได้มอบหมายให้ทำ
+    job: ลองใช้ iText 7 ในการสร้างไฟล์ PDF
     break_time: 1
-  - 
-    date: 03/06/63
+    # note: หมายเหตุ
+    
+  - # Day 25
+    date: 01/07/63
     in: 9:30
-    out: 17:30
-    job: เรียนรู้รายละเอียดงานที่อาจารย์ได้มอบหมายให้ทำ
+    out: 18:30
+    job: ใช้ iText 7 ในการสร้างไฟล์ PDF แบบมีตารางและรูปภาพ
     break_time: 1
-  - 
-    date: 03/06/63
-    in: 9:30
+    # note: หมายเหตุ
+    
+  - # Day 26
+    date: 02/07/63
+    in: 8:30
     out: 17:30
-    job: เรียนรู้รายละเอียดงาน
+    job: ทดลองใช้ภาษาไทยในการสร้างไฟล์ PDF ด้วย iText 7
     break_time: 1
-  - 
-    date: 03/06/63
+    # note: หมายเหตุ
+    
+  - # Day 27
+    date: 03/07/63
     in: 9:30
-    out: 17:30
-    job: เรียนรู้รายละเอียดงานที่อาจารย์ได้มอบ 
+    out: 18:30
+    job: หาเหตุผลและวิธีแก้การใช้ฟอนต์ภาษาไทยไม่ได้ของ iText 7 
     break_time: 1
-  - 
-    date: 03/06/63
-    in: 9:30
+    # note: หมายเหตุ
+    
+  - # Day 28
+    date: 07/07/63
+    in: 8:30
     out: 17:30
-    job: เรียนรู้รายละเอียดงานที่อาจารย์ได้มอบหมายให้ทำ
+    job: ทดลองใช้ iText 5 ในการแก้ปัญหาเรื่องฟอนต์ภาษาไทย
     break_time: 1
-  - 
-    date: 03/06/63
+    # note: หมายเหตุ
+    
+  - # Day 29
+    date: 08/07/63
     in: 9:30
-    out: 17:30
-    job: เรียนรู้รายละเอียดงาน
+    out: 19:30
+    job: ทดลองใช้ iText 5 ในการใส่ข้อมูลลงใน field ของ Acrobat
     break_time: 1
-  - 
-    date: 03/06/63
-    in: 9:30
+    # note: หมายเหตุ
+    
+  - # Day 30
+    date: 09/07/63
+    in: 8:30
     out: 17:30
-    job: เรียนรู้รายละเอียดงานที่อาจารย์ได้มอบ
+    job: หาวิธี merge text file กับ  PDF template
     break_time: 1
-  - 
-    date: 03/06/63
+    # note: หมายเหตุ
+    
+  - # Day 31
+    date: 10/07/63
     in: 9:30
-    out: 17:30
-    job: เรียนรู้รายละเอียดงานที่อาจารย์ได้มอบหมายให้ทำ
+    out: 18:30
+    job: ทดลอง merge text file กับ  PDF template
     break_time: 1
-  - 
-    date: 03/06/63
+    # note: หมายเหตุ
+    
+  - # Day 32
+    date: 13/07/63
     in: 9:30
     out: 17:30
-    job: เรียนรู้รายละเอียดงาน
+    job: ทดลอง merge json file กับ  PDF template
     break_time: 1
-  - 
-    date: 03/06/63
-    in: 9:30
+    # note: หมายเหตุ
+    
+  - # Day 33
+    date: 14/07/63
+    in: 13:30
     out: 17:30
-    job: เรียนรู้รายละเอียดงานที่อาจารย์ได้มอบ 
+    job: หา  Java library สำหรับ parse ไฟล์ .yml,.toml
     break_time: 1
-  - 
-    date: 03/06/63
-    in: 9:30
-    out: 17:30
-    job: เรียนรู้รายละเอียดงานที่อาจารย์ได้มอบ 
+    # note: หมายเหตุ
+    
+  - # Day 34
+    date: 15/07/63
+    in: 13:30
+    out: 18:30
+    job: ทดลอง merge .yml,.toml file กับ  PDF template
     break_time: 1
-  - 
-    date: 03/06/63
-    in: 9:30
+    # note: หมายเหตุ
+    
+  - # Day 35
+    date: 16/07/63
+    in: 13:30
     out: 17:30
-    job: เรียนรู้รายละเอียดงานที่อาจารย์ได้มอบ 
-    break_time: 1    
-  - 
-    date: 03/06/63
-    in: 9:30
-    out: 17:30
-    job: เรียนรู้รายละเอียดงานที่อาจารย์ได้มอบ 
+    job: สรุป file format ที่จะใช้ในการ generate PDF
     break_time: 1
-  - 
-    date: 03/06/63
-    in: 9:30
-    out: 17:30
-    job: เรียนรู้รายละเอียดงานที่อาจารย์ได้มอบ 
+    # note: หมายเหตุ  
+    
+  - # Day 36
+    date: 17/07/63
+    in: 13:30
+    out: 18:30
+    job: เริ่มเขียนโปรแกรมสำหรับ generate PDF
     break_time: 1
-  - 
-    date: 03/06/63
-    in: 9:30
+    # note: หมายเหตุ
+    
+  - # Day 37
+    date: 20/07/63
+    in: 13:30
     out: 17:30
-    job: เรียนรู้รายละเอียดงานที่อาจารย์ได้มอบ 
-    break_time: 1    
+    job: ศึกษาวิธีแก้ปัญหาเรื่องชื่อ field ข้อมูลในไฟล์ .yml 
+    break_time: 1
+    # note: หมายเหตุ
+    
+  - # Day 38
+    date: 21/07/63
+    in: 13:30
+    out: 17:30
+    job: แก้ไขชื่อ field ข้อมูลในไฟล์ .yml
+    break_time: 1
+    # note: หมายเหตุ    
+
+  - # Day 39
+    date: 22/07/63
+    in: 13:30
+    out: 18:30
+    job: ทดลองใช้งานและหาข้อผิดพลาดของโปรแกรมที่เขียน
+    break_time: 1
+    # note: หมายเหตุ    
+
+  - # Day 40
+    date: 23/07/63
+    in: 13:30
+    out: 17:30
+    job: แก้ไข PDF template ให้เพียงพอเพื่อรองรับเวลาในการฝึกงาน
+    break_time: 1
+    # note: หมายเหตุ    
+
+  - # Day 41
+    date: 24/07/63
+    in: 13:30
+    out: 18:30
+    job: แก้ไข command line option ของโปรแกรม
+    break_time: 1
+    # note: หมายเหตุ    
